@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+<title>Customers Page</title>
+<style type="text/css">
+    .output {
+     font-weight:bold;
+     padding-left: 2px;
+    }
+   </style>
+</head>
+<h:body style="margin-left: 10px; margin-right: 10px; width:calc(100%-20px);">
+	<div><h:button value="Back" outcome="index.xhtml" /></div>
+    <h1>Auto Servis - Servisi</h1>
+    <hr />
+   	<h2>Service fields</h2>
+   	<h:form>
+   		<div style="float: left; width: auto; background-color: #FF0000">   
+   				
+   			<h:outputLabel class="output" value="ID"/>
+	        <div>	        	
+	        	<h:inputText value="#{servisController.id}"></h:inputText>
+	      	</div>		
+	   		
+	   		<h:outputLabel class="output" value="Name"/>
+	        <div>	        	
+	        	<h:inputText value="#{servisController.name}"></h:inputText>
+	      	</div>
+	      	
+	      	<h:outputLabel class="output" value="Parts"/>
+	        <div>	        	
+	        	<h:inputText value="#{servisController.parts}"></h:inputText>
+	      	</div>
+	      	
+	      	<h:outputLabel class="output" value="Price"/>
+	        <div>	        	
+	        	<h:inputText value="#{servisController.price}"></h:inputText>
+	      	</div>
+	      	
+	      	<h:commandButton value="Add" action="#{servisController.addServis(servisController.name, servisController.price, servisController.parts)}"></h:commandButton>	
+	      	<h:commandButton value="Update" action="#{servisController.updateServis(servisController.id, servisController.name, servisController.price, servisController.parts)}"></h:commandButton>
+      	</div>
+      	</h:form>
+      	
+      	
+      	<h:form>
+	      	<div>
+		      	<h:dataTable value="#{servisController.listOfServises()}" var="c"
+		    				 styleClass="order-table"
+		    				 headerClass="order-table-header"
+		    				 rowClasses="order-table-odd-row,order-table-even-row"
+		    				 style="font-size:23px;font-weight:bold; margin-left: 5px; border:3px solid;text-align:center; border-spacing: 5px; width:80%; margin-left:10%;">
+		  		
+		    	<h:column>
+		    		<f:facet  name="header">ID</f:facet>
+		    		<h:outputText value="#{c.getId()}"/>
+		    	</h:column>
+		 
+		    	<h:column>
+		    		<f:facet name="header">Name</f:facet>
+		    		<h:outputText value="#{c.name}"/>
+		    	</h:column>
+		
+		    	<h:column>
+		    		<f:facet name="header">Parts</f:facet>
+		    		<h:outputText value="#{c.parts}"/>
+		    	</h:column>
+		    	
+		    	<h:column>
+		    		<f:facet name="header">Phone</f:facet>
+		    		<h:outputText value="#{c.price}"/>
+		    	</h:column>
+		    	
+		    	<h:column>
+		    		<f:facet name="header">-</f:facet>
+		    		<h:commandButton value="Delete" action="#{servisController.deleteServis(c.id)}"></h:commandButton>
+		    	</h:column>		    		
+	    	
+				</h:dataTable>
+	      	</div>
+      	</h:form>
+         
+</h:body>
+</html>

@@ -1,0 +1,11 @@
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\ISDocker.exe
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\appsettings.Development.json
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\appsettings.json
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\ISDocker.dll
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\ISDocker.deps.json
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\ISDocker.runtimeconfig.json
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\ISDocker.pdb
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\Microsoft.OpenApi.dll
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\Swashbuckle.AspNetCore.Swagger.dll
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Project\Docker\ISDocker\bin\Release\net6.0\publish\Swashbuckle.AspNetCore.SwaggerUI.dll

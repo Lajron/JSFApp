@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+<title>Customers Page</title>
+<style type="text/css">
+    .output {
+     font-weight:bold;
+     padding-left: 2px;
+    }
+    
+    .c2, .c3, .c4, .c5, .c6 {
+    	background-color: #34568B;
+    	color: white;
+    }
+    
+    .c7, .c8 {
+    	background-color: #955251;
+    	color: white;
+    }
+   </style>
+</head>
+<h:body style="margin-left: 10px; margin-right: 10px; width:calc(100%-20px);">
+	<div><h:button value="Back" outcome="index.xhtml" /></div>
+    <h1>Auto Servis - Current State of Auto Servis</h1>
+    <hr />
+   	<h2>Service fields</h2>
+   	<h:form>
+   		<div style="float: left; width: auto; background-color: #FF0000">   
+   				
+   			<h:outputLabel class="output" value="ID"/>
+	        <div>	
+	        	<h:inputText value="#{custservController.id}"></h:inputText>
+	      	</div>		
+	   		
+	   		<h:outputLabel class="output" value="FK Customer"/>
+	        <div>	        	
+	        	<h:inputText value="#{custservController.fkcustomer}"></h:inputText>
+	      	</div>
+	      	
+	      	<h:outputLabel class="output" value="FK Service"/>
+	        <div>	        	
+	        	<h:inputText value="#{custservController.fkservice}"></h:inputText>
+	      	</div>
+	      	
+	      	<h:commandButton value="Add" action="#{custservController.addCustserv(custservController.fkcustomer, custservController.fkservice, 'NO', '0', 'WAIT' )}"></h:commandButton>	
+	      	<h:commandButton value="Update" action="#{custservController.updateCustserv(custservController.id, custservController.fkcustomer, custservController.fkservice, 'NO', '0', 'WAIT')}"></h:commandButton>
+      	</div>
+      	</h:form>
+      	
+      	
+      	<h:form>
+	      	<div>
+		      	<h:dataTable value="#{custservController.listOfCustserves()}" var="c"
+		    				 styleClass="order-table"
+		    				 headerClass="order-table-header"
+		    				 columnClasses="c1,c2,c3, c4, c5, c6, c7, c8"
+		    				 rowClasses="order-table-odd-row,order-table-even-row"
+		    				 style="font-size:23px;font-weight:bold; margin-left: 5px; border:3px solid;text-align:center; border-spacing: 5px; width:80%; margin-left:10%;">
+		  
+		    	<h:column >
+		    		<f:facet  name="header">ID</f:facet>
+		    		<h:outputText value="#{c.getId()}"/>
+		    	</h:column>
+		 
+		    	<h:column style="background-color: #0000FF">
+		    		<f:facet name="header">[ FK-C</f:facet>
+		    		<h:outputText value="#{c.fkcustomer}"/>
+		    	</h:column>
+		    	
+		    	<h:column style="background-color: #0000FF">
+		    		<f:facet name="header">- Name -</f:facet>
+		    		<h:outputText value="#{customerController.getCustomer(c.fkcustomer).name}"/>
+		    	</h:column>
+		    	
+		    	<h:column style="background-color: #0000FF">
+		    		<f:facet name="header">- Phone -</f:facet>
+		    		<h:outputText value="#{customerController.getCustomer(c.fkcustomer).phone}"/>
+		    	</h:column>
+		    	
+		    	<h:column style="background-color: #0000FF">
+		    		<f:facet name="header">- Car -</f:facet>
+		    		<h:outputText value="#{customerController.getCustomer(c.fkcustomer).carmodel}"/>
+		    	</h:column>
+		    	
+		    	<h:column style="background-color: #0000FF">
+		    		<f:facet name="header">- Plate Number ]</f:facet>
+		    		<h:outputText value="#{customerController.getCustomer(c.fkcustomer).carplate}"/>
+		    	</h:column>
+		
+		    	<h:column>
+		    		<f:facet name="header">[FK-S</f:facet>
+		    		<h:outputText value="#{c.fkservice}"/>
+		    	</h:column>
+		    	
+		    	<h:column style="background-color: #0000FF">
+		    		<f:facet name="header">- Task ]</f:facet>
+		    		<h:outputText value="#{servisController.getServis(c.fkservice).name}"/>
+		    	</h:column>
+		    	
+		    	<h:column>
+		    		<f:facet name="header">Fixed</f:facet>		    		
+		    		<h:commandButton style="font-size: 20px; background-color: white; width:30px; height:30px;" value="#{c.fixed.toLowerCase() == 'no' ? ' ' : '✔' }" action="#{custservController.isFixed(c.id)}"></h:commandButton>
+		    	</h:column>
+		    	
+		    	<h:column>
+		    		<f:facet name="header">Full Price</f:facet>
+		    		<h:outputText value="#{c.fullprice}"/>
+		    	</h:column>
+		    	
+		    	<h:column>
+		    		<f:facet name="header">Paid</f:facet>
+		    		<h:commandButton value="#{custservController.getCustserv(c.id).paid}" action="#{custservController.isPaid(c.id)}"></h:commandButton>
+		    	</h:column>
+		    	
+		    	<h:column>
+		    		<f:facet name="header">-</f:facet>
+		    		<h:commandButton value="Delete" action="#{custservController.deleteCustserv(c.id)}"></h:commandButton>
+		    	</h:column>
+		    		
+	    	
+				</h:dataTable>
+	      	</div>
+      	</h:form>
+         
+</h:body>
+</html>
