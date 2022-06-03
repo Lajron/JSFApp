@@ -1,0 +1,4 @@
+14. Informacioni sistem servisa za automobile. Cuva se evidencija automobila primljenih na servis, dostupnih usluga i delova (sa cenam), ali dijagnosticih informacija za automobile. Za svaki automobil se cuva informacija o modelu, boji, broj licne karte vlasnika, datum prijema. Dijagnostika se odnosi na uocene probleme i njihov opis. Nakon dolaska u servis, zavisno od uocenih problema, primenjuju se servisne usluge (popravke i slicno), ali može biti potrebna i nabavka novih delova. Omoguciti generisanje obacuna usluge (broj licne karte, datum kada je završena popravka i ukupna cena) na osnovu dostavljenih usluga i cena, koji se takode trajno cuva pored prethodno navedenih evidencija.
+
+
+Obrazac: dekompozicija poslovnog cilja
